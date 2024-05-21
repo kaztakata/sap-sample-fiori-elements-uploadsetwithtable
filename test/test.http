@@ -1,8 +1,3 @@
-### You need to bind XSUAA and destination service instance by below commands
-### cds bind -2 sap-sample-fiori-elements-uploadset-auth
-### cds bind -2 sap-sample-fiori-elements-uploadset-destination
-### Then change "kind": "xsuaa-auth" to "kind": "mocked" in .cdsrc-private.json
-
 ### Authentication setting of Hybrid testing
 @serviceUrl = http://localhost:4004
 
@@ -28,21 +23,21 @@ Authorization: Basic alice:123
 Content-Type: application/json
 
 {
-    "name": "thumb.png"
+    "filename": "thumb.png"
 }
 
 ### Extract File Object ID
 @fileId = {{createFile.response.body.$.ID}}
 
 ### Upload File Content
-PUT {{serviceUrl}}/odata/v4/user/Attachments('{{fileId}}')/content
+PUT {{serviceUrl}}/odata/v4/user/TemplateRequests_attachments(up__ID={{templateRequestId}},ID={{fileId}},IsActiveEntity=false)/content 
 Authorization: Basic alice:123
 Content-Type: image/png
 
 < ./thumb.png
 
 ### Download File
-GET {{serviceUrl}}/odata/v4/user/TemplateRequests(ID={{templateRequestId}},IsActiveEntity=false)/attachments('{{fileId}}')/content
+GET {{serviceUrl}}/odata/v4/user/TemplateRequests_attachments(up__ID={{templateRequestId}},ID={{fileId}},IsActiveEntity=false)/content
 Authorization: Basic alice:123
 
 ### Save Template Request
@@ -53,9 +48,5 @@ Content-Type: application/json
 {}
 
 ### Download File after saving Template Request
-GET {{serviceUrl}}/odata/v4/user/TemplateRequests(ID={{templateRequestId}},IsActiveEntity=true)/attachments('{{fileId}}')/content
-Authorization: Basic alice:123
-
-### Delete File Object
-DELETE {{serviceUrl}}/odata/v4/user/Attachments('{{fileId}}')
+GET {{serviceUrl}}/odata/v4/user/TemplateRequests_attachments(up__ID={{templateRequestId}},ID={{fileId}},IsActiveEntity=true)/content
 Authorization: Basic alice:123

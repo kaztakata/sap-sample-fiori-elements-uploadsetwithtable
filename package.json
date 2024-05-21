@@ -1,14 +1,14 @@
 {
   "name": "sap-sample-fiori-elements-uploadset",
   "version": "1.0.0",
-  "description": "Extend Upload Set to Fiori Elements and utilize Document Management Service",
-  "repository": "https://github.com/kaztakata/sap-sample-fiori-elements-uploadset.git",
+  "description": "Extend Upload Set with Table to Fiori Elements and utilize Object Store",
+  "repository": "https://github.com/kaztakata/sap-sample-fiori-elements-uploadsetwithtable.git",
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@cap-js/attachments": "^1.0.2",
     "@sap/cds": "^7",
     "express": "^4",
-    "sap-cap-sdm-plugin": "^1.3.1",
     "@sap/xssec": "^3",
     "@sap/cds-hana": "^2"
   },
@@ -28,8 +28,25 @@
   },
   "cds": {
     "requires": {
-      "auth": "xsuaa",
-      "db": "hana"
+      "kinds": {
+        "attachments-db": {
+          "impl": "@cap-js/attachments/lib/basic"
+        },
+        "attachments-s3": {
+          "impl": "@cap-js/attachments/lib/aws-s3"
+        }
+      },
+      "[production]":{
+        "auth": "xsuaa",
+        "db": "hana",
+        "destinations": true,
+        "attachments": {
+          "kind": "s3",
+          "vcap": {
+            "name": "sap-sample-fiori-elements-uploadset-object-store"
+          }
+        }
+      }
     }
   },
   "workspaces": [

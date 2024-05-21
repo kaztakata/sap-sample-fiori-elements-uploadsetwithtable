@@ -1,6 +1,6 @@
 _schema-version: "3.1"
 ID: sap-sample-fiori-elements-uploadset
-description: Extend Upload Set to Fiori Elements and utilize Document Management Service
+description: Extend Upload Set with Table to Fiori Elements and utilize Object Store
 version: 1.0.0
 modules:
   - name: sap-sample-fiori-elements-uploadset-srv
@@ -10,6 +10,7 @@ modules:
       - name: sap-sample-fiori-elements-uploadset-db
       - name: sap-sample-fiori-elements-uploadset-auth
       - name: sap-sample-fiori-elements-uploadset-destination
+      - name: sap-sample-fiori-elements-uploadset-object-store
     provides:
       - name: srv-api
         properties:
@@ -131,6 +132,11 @@ resources:
       service: html5-apps-repo
       service-name: sap-sample-fiori-elements-uploadset-html5-srv
       service-plan: app-host
+  - name: sap-sample-fiori-elements-uploadset-object-store
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: objectstore
+      service-plan: standard
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

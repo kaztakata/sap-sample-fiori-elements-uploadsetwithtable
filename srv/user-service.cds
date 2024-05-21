@@ -10,7 +10,4 @@ service UserService {
       modifiedAt,
       modifiedBy,
     };
-
-  entity Attachments      as projection on db.Attachments;
-
 }
