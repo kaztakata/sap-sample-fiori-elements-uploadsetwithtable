@@ -1,8 +1,0 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:upload="sap.m.upload">
-  <upload:UploadSet core:require="{ handler: 'kaztakata/templaterequests/ext/fragment/Attachments'}" id="UploadSet" instantUpload="false" httpRequestMethod="Put" showIcons="false" uploadEnabled="true" terminationEnabled="true" maxFileNameLength="100" maxFileSize="200" items="{path: 'attachments', templateShareable: false}" afterItemAdded="handler.onAfterItemAdded" uploadCompleted="handler.onUploadCompleted">
-    <upload:items>
-      <upload:UploadSetItem id="UploadSetItem" fileName="{name}" mediaType="{contentType}" url="serviceUrl/Attachments('{ID}')/content" visibleEdit="false" visibleRemove="false" openPressed="handler.onOpenPressed">
-      </upload:UploadSetItem>
- 	  </upload:items>
-  </upload:UploadSet>
-</core:FragmentDefinition>
