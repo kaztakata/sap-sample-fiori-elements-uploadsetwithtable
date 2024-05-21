@@ -1,5 +1,5 @@
 # Overview
-- This repository is for SAP Community blog: [Extend Upload Set with Table to Fiori Elements and utilize Object Store](https://community.sap.com/t5/technology-blogs-by-members/extend-upload-set-with-table-to-fiori-elements-and-utilize-object-store).
+- This repository is for SAP Community blog: [Extend Upload Set with Table to Fiori Elements and utilize Object Store](https://community.sap.com/t5/technology-blogs-by-members/extend-upload-set-with-table-to-fiori-elements-and-utilize-object-store/ba-p/13707101).
 
 # How to use this
 - Select BTP subaccount on AWS.
